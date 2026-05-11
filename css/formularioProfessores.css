@@ -1,0 +1,264 @@
+/* ================= RESET ================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+/* ================= BODY ================= */
+body {
+    min-height: 100vh;
+    background-color: #1a2233;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* ================= HEADER DO SITE ================= */
+.header {
+    width: 100%;
+    background-color: #1a253a;
+    padding: 15px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 3px solid #00a8ff;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo {
+    width: 35px;
+    height: 35px;
+    background: white;
+    border-radius: 50%;
+}
+
+.school-name {
+    font-size: 22px;
+    font-weight: bold;
+    color: white;
+}
+
+.nav-menu a {
+    color: #ccc;
+    text-decoration: none;
+    margin-right: 20px;
+    font-size: 14px;
+    transition: color 0.3s;
+}
+
+.nav-menu a:hover {
+    color: white;
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+}
+
+.user-info {
+    text-align: right;
+    font-size: 13px;
+}
+
+.user-icon {
+    font-size: 24px;
+    background: rgba(255,255,255,0.1);
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.user-dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: #1e2d3d;
+    border: 1px solid #2e3d50;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+    min-width: 120px;
+    display: none;
+    z-index: 1000;
+}
+
+.user-dropdown a {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: #ccc;
+    border-bottom: 1px solid #2e3d50;
+    font-size: 13px;
+}
+
+.user-dropdown a:hover {
+    background: #263545;
+    color: white;
+}
+
+/* ================= FORM CONTAINER ================= */
+.form-container {
+    width: 100%;
+    max-width: 620px;
+    padding: 40px 20px 60px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+/* ================= CARD DO FORMULÁRIO ================= */
+.form-wrapper {
+    background-color: #1e2c3a;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+}
+
+/* Cabeçalho do formulário */
+.form-header {
+    padding: 28px 36px 20px;
+    text-align: center;
+    border-bottom: 1px solid #2a3a4a;
+}
+
+.form-header h1 {
+    font-size: 22px;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 8px;
+}
+
+.form-header p {
+    font-size: 13px;
+    color: #7a8fa0;
+    line-height: 1.5;
+}
+
+/* Body do formulário */
+form {
+    padding: 24px 36px 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+/* ================= GRUPOS DE CAMPO ================= */
+.field-group {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.field-group label {
+    font-size: 14px;
+    font-weight: 500;
+    color: #d0dce8;
+}
+
+.field-group input,
+.field-group textarea,
+.field-group select {
+    background-color: #253344;
+    border: 1px solid #2e3f52;
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 14px;
+    color: #c8d6e5;
+    outline: none;
+    width: 100%;
+    font-family: 'Roboto', sans-serif;
+    transition: border-color 0.2s, background-color 0.2s;
+    resize: none;
+}
+
+.field-group input::placeholder,
+.field-group textarea::placeholder {
+    color: #4a6070;
+}
+
+.field-group input:focus,
+.field-group textarea:focus,
+.field-group select:focus {
+    border-color: #00a8ff;
+    background-color: #2a3d52;
+}
+
+/* Input de data */
+.field-group input[type="date"] {
+    color-scheme: dark;
+}
+
+/* ================= BOTÕES ================= */
+.button-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    margin-top: 6px;
+}
+
+.btn-submit {
+    width: 100%;
+    background-color: #2d4060;
+    color: white;
+    border: none;
+    padding: 13px;
+    border-radius: 6px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    letter-spacing: 0.4px;
+    transition: background-color 0.2s;
+}
+
+.btn-submit:hover {
+    background-color: #3a5278;
+}
+
+.btn-clear {
+    background: transparent;
+    color: #7a8fa0;
+    border: none;
+    cursor: pointer;
+    font-size: 13px;
+    transition: color 0.2s;
+}
+
+.btn-clear:hover {
+    color: white;
+}
+
+/* ================= AVISO VOLUNTÁRIO ================= */
+.aviso-voluntario {
+    background-color: #1a2a3a;
+    border-left: 3px solid #00a8ff;
+    border-radius: 6px;
+    padding: 12px 16px;
+    font-size: 13px;
+    color: #8aaabf;
+    line-height: 1.6;
+}
+
+.aviso-voluntario strong {
+    color: #c8d6e5;
+}
+
+/* Cabeçalho — texto forte em destaque */
+.form-header strong {
+    color: #c8d6e5;
+}
