@@ -4,141 +4,364 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quero ser Voluntário - SpectrumTI</title>
+
     <link rel="stylesheet" href="../css/formularioProfessores.css">
 </head>
+
 <body>
 
     <!-- HEADER DO SITE -->
     <header class="header">
+
         <div class="header-left">
+
             <div class="logo-container">
                 <img src="../Imagens/logo.png" alt="Logo SpectrumTI" class="logo">
                 <span class="school-name">SpectrumTI</span>
             </div>
+
             <nav class="nav-menu">
                 <a href="trilha_cursos.html">Minha Página</a>
                 <a href="#">Meus Certificados</a>
                 <a href="#">Ensine na Spectrum</a>
             </nav>
+
         </div>
+
         <div class="user-profile">
+
             <div class="user-info">
                 <span>Olá,</span>
                 <strong id="user-name">Usuário</strong>
             </div>
+
             <div id="user-icon" class="user-icon">👤</div>
+
             <div id="user-dropdown" class="user-dropdown">
                 <a href="perfil.html">Perfil</a>
                 <a href="../backend/logout.php">Sair</a>
             </div>
+
         </div>
+
     </header>
 
     <!-- FORMULÁRIO -->
     <main class="form-container">
+
         <div class="form-wrapper">
 
             <div class="form-header">
+
                 <h1>Quero ser Voluntário</h1>
+
                 <p>
-                    Que incrível que você quer compartilhar seu conhecimento! 🎉<br>
-                    Este é um trabalho <strong>voluntário</strong>, sem remuneração financeira, em parceria com ONGs que levam educação em tecnologia a quem mais precisa.<br><br>
+                    Que incrível que você quer compartilhar seu conhecimento! 🎉
+                    <br><br>
+
+                    Este é um trabalho <strong>voluntário</strong>,
+                    sem remuneração financeira, em parceria com ONGs
+                    que levam educação em tecnologia a quem mais precisa.
+
+                    <br><br>
+
                     Preencha as informações abaixo e entraremos em contato.
                 </p>
+
             </div>
 
-            <form id="main-form">
+            <!-- FORM -->
+            <form id="main-form" method="POST">
 
+                <!-- NOME -->
                 <div class="field-group">
-                    <label>Nome completo</label>
-                    <input type="text" placeholder="Seu nome completo">
+
+                    <label for="nome_completo">
+                        Nome completo
+                    </label>
+
+                    <input
+                        type="text"
+                        id="nome_completo"
+                        name="nome_completo"
+                        placeholder="Seu nome completo"
+                        required
+                    >
+
                 </div>
 
+                <!-- EMAIL -->
                 <div class="field-group">
-                    <label>E-mail</label>
-                    <input type="email" placeholder="seu@email.com">
+
+                    <label for="email">
+                        E-mail
+                    </label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="seu@email.com"
+                        required
+                    >
+
                 </div>
 
+                <!-- TELEFONE -->
                 <div class="field-group">
-                    <label>Telefone / WhatsApp</label>
-                    <input type="tel" placeholder="(00) 00000-0000">
+
+                    <label for="telefone">
+                        Telefone / WhatsApp
+                    </label>
+
+                    <input
+                        type="tel"
+                        id="telefone"
+                        name="telefone"
+                        placeholder="(00) 00000-0000"
+                        required
+                    >
+
                 </div>
 
+                <!-- IDADE -->
                 <div class="field-group">
-                    <label>Idade</label>
-                    <input type="number" placeholder="Ex: 20" min="16" max="99">
+
+                    <label for="idade">
+                        Idade
+                    </label>
+
+                    <input
+                        type="number"
+                        id="idade"
+                        name="idade"
+                        placeholder="Ex: 20"
+                        min="16"
+                        max="99"
+                        required
+                    >
+
                 </div>
 
+                <!-- SITUAÇÃO TI -->
                 <div class="field-group">
-                    <label>Você é estudante ou já concluiu algum curso na área de TI?</label>
-                    <select>
-                        <option value="" disabled selected>Selecione uma opção</option>
-                        <option value="estudante">Sou estudante de TI</option>
-                        <option value="concluido">Já concluí um curso na área</option>
-                        <option value="autodidata">Aprendi de forma autodidata</option>
-                        <option value="outro">Outro</option>
+
+                    <label for="situacao_ti">
+                        Você é estudante ou já concluiu algum curso na área de TI?
+                    </label>
+
+                    <select
+                        id="situacao_ti"
+                        name="situacao_ti"
+                        required
+                    >
+
+                        <option value="" disabled selected>
+                            Selecione uma opção
+                        </option>
+
+                        <option value="estudante">
+                            Sou estudante de TI
+                        </option>
+
+                        <option value="concluido">
+                            Já concluí um curso na área
+                        </option>
+
+                        <option value="autodidata">
+                            Aprendi de forma autodidata
+                        </option>
+
+                        <option value="outro">
+                            Outro
+                        </option>
+
                     </select>
+
                 </div>
 
+                <!-- CURSO -->
                 <div class="field-group">
-                    <label>Qual curso ou área você está cursando / cursou? <span style="color:#4a6070">(opcional)</span></label>
-                    <input type="text" placeholder="Ex: Análise e Desenvolvimento de Sistemas, Ciência da Computação...">
+
+                    <label for="curso_detalhes">
+                        Qual curso ou área você está cursando / cursou?
+                        <span style="color:#4a6070">
+                            (opcional)
+                        </span>
+                    </label>
+
+                    <input
+                        type="text"
+                        id="curso_detalhes"
+                        name="curso_detalhes"
+                        placeholder="Ex: ADS, Ciência da Computação..."
+                    >
+
                 </div>
 
+                <!-- CONTEÚDOS -->
                 <div class="field-group">
-                    <label>Quais conteúdos você se sente preparado para ensinar?</label>
-                    <textarea placeholder="Ex: Lógica de Programação, HTML e CSS, Python para iniciantes..." rows="2"></textarea>
+
+                    <label for="conteudos_ensino">
+                        Quais conteúdos você se sente preparado para ensinar?
+                    </label>
+
+                    <textarea
+                        id="conteudos_ensino"
+                        name="conteudos_ensino"
+                        rows="2"
+                        placeholder="Ex: HTML, CSS, Python..."
+                        required
+                    ></textarea>
+
                 </div>
 
+                <!-- EXPERIÊNCIA -->
                 <div class="field-group">
-                    <label>Já teve alguma experiência ensinando ou explicando conteúdo para outras pessoas?</label>
-                    <select>
-                        <option value="" disabled selected>Selecione uma opção</option>
-                        <option value="sim_formal">Sim, de forma formal (monitoria, curso, etc.)</option>
-                        <option value="sim_informal">Sim, de forma informal (amigos, colegas, etc.)</option>
-                        <option value="nao">Não, mas tenho vontade de começar</option>
+
+                    <label for="experiencia_previa">
+                        Já teve experiência ensinando?
+                    </label>
+
+                    <select
+                        id="experiencia_previa"
+                        name="experiencia_previa"
+                        required
+                    >
+
+                        <option value="" disabled selected>
+                            Selecione uma opção
+                        </option>
+
+                        <option value="sim_formal">
+                            Sim, formalmente
+                        </option>
+
+                        <option value="sim_informal">
+                            Sim, informalmente
+                        </option>
+
+                        <option value="nao">
+                            Não
+                        </option>
+
                     </select>
+
                 </div>
 
+                <!-- DISPONIBILIDADE -->
                 <div class="field-group">
-                    <label>Disponibilidade de horários para as aulas</label>
-                    <textarea placeholder="Ex: Terças e quintas à noite, sábados pela manhã..." rows="2"></textarea>
+
+                    <label for="disponibilidade_horario">
+                        Disponibilidade de horários
+                    </label>
+
+                    <textarea
+                        id="disponibilidade_horario"
+                        name="disponibilidade_horario"
+                        rows="2"
+                        placeholder="Ex: noites e finais de semana"
+                        required
+                    ></textarea>
+
                 </div>
 
+                <!-- ACESSO -->
                 <div class="field-group">
-                    <label>Você tem acesso a computador e internet estável para ministrar aulas online?</label>
-                    <select>
-                        <option value="" disabled selected>Selecione uma opção</option>
-                        <option value="sim">Sim, tenho os dois</option>
-                        <option value="parcial">Tenho, mas com limitações</option>
-                        <option value="nao">Não tenho no momento</option>
+
+                    <label for="acesso_tecnologia">
+                        Você possui computador e internet estável?
+                    </label>
+
+                    <select
+                        id="acesso_tecnologia"
+                        name="acesso_tecnologia"
+                        required
+                    >
+
+                        <option value="" disabled selected>
+                            Selecione uma opção
+                        </option>
+
+                        <option value="sim">
+                            Sim
+                        </option>
+
+                        <option value="parcial">
+                            Parcialmente
+                        </option>
+
+                        <option value="nao">
+                            Não
+                        </option>
+
                     </select>
+
                 </div>
 
+                <!-- MOTIVAÇÃO -->
                 <div class="field-group">
-                    <label>Por que você quer ser voluntário na SpectrumTI?</label>
-                    <textarea placeholder="Conte o que te motivou a querer ensinar e ajudar outras pessoas..." rows="3"></textarea>
+
+                    <label for="motivacao_voluntariado">
+                        Por que você quer ser voluntário?
+                    </label>
+
+                    <textarea
+                        id="motivacao_voluntariado"
+                        name="motivacao_voluntariado"
+                        rows="3"
+                        placeholder="Conte sua motivação..."
+                        required
+                    ></textarea>
+
                 </div>
 
+                <!-- OBSERVAÇÕES -->
                 <div class="field-group">
-                    <label>Tem alguma dúvida ou algo que queira nos contar? <span style="color:#4a6070">(opcional)</span></label>
-                    <textarea placeholder="Fique à vontade..." rows="2"></textarea>
+
+                    <label for="observacoes_adicionais">
+                        Observações adicionais
+                    </label>
+
+                    <textarea
+                        id="observacoes_adicionais"
+                        name="observacoes_adicionais"
+                        rows="2"
+                        placeholder="Opcional"
+                    ></textarea>
+
                 </div>
 
+                <!-- AVISO -->
                 <div class="aviso-voluntario">
-                    ⚠️ Ao enviar este formulário, você confirma que está ciente de que esta é uma atividade <strong>voluntária e sem remuneração financeira</strong>, realizada em parceria com ONGs parceiras da SpectrumTI.
+
+                    ⚠️ Ao enviar este formulário, você confirma que está
+                    ciente de que esta é uma atividade
+                    <strong>voluntária e sem remuneração financeira</strong>.
+
                 </div>
 
+                <!-- BOTÕES -->
                 <div class="button-group">
-                    <button type="submit" class="btn-submit">Quero ser voluntário!</button>
-                    <button type="reset" class="btn-clear">Limpar formulário</button>
+
+                    <button type="submit" class="btn-submit">
+                        Quero ser voluntário!
+                    </button>
+
+                    <button type="reset" class="btn-clear">
+                        Limpar formulário
+                    </button>
+
                 </div>
 
             </form>
+
         </div>
+
     </main>
 
-    <script src="script.js"></script>
+    <!-- JS -->
+    <script src="../js/formularioProfessores.js"></script>
 
 </body>
 </html>
