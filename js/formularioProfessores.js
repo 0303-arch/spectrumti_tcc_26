@@ -35,4 +35,4 @@ formulario.addEventListener("submit", async (event) => {
         alert("Erro ao enviar formulário.");
     }
 
-});
+}); 

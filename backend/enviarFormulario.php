@@ -72,7 +72,7 @@ VALUES (
     '$acesso_tecnologia',
     '$motivacao_voluntariado',
     '$observacoes_adicionais'
-)
+) 
 ";
 
 if ($conn->query($sql) === TRUE) {

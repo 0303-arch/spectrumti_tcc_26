@@ -233,7 +233,7 @@ form {
 .btn-clear {
     background: transparent;
     color: #7a8fa0;
-    border: none;
+    border: none; 
     cursor: pointer;
     font-size: 13px;
     transition: color 0.2s;
