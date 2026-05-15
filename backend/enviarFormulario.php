@@ -2,19 +2,29 @@
 
 header("Content-Type: application/json; charset=UTF-8");
 
-// conexão
-$host = "localhost";
-$usuario = "gabrielkafferDS";
-$senha = "gabrielkafferDS123@";
-$banco = "spectrum";
+session_start();
 
-$conn = new mysqli($host, $usuario, $senha, $banco);
+/*
+SIMULAÇÃO TEMPORÁRIA
+Depois você pegará do login real
+*/
+$usuario_id = 1;
 
+// CONEXÃO
+$conn = new mysqli(
+    "localhost",
+    "root",
+    "",
+    "spectrum"
+);
+
+// ERRO CONEXÃO
 if ($conn->connect_error) {
 
     echo json_encode([
         "sucesso" => false,
-        "mensagem" => "Erro conexão banco"
+        "mensagem" => "Erro conexão banco",
+        "erro" => $conn->connect_error
     ]);
 
     exit;
@@ -22,7 +32,7 @@ if ($conn->connect_error) {
 
 $conn->set_charset("utf8mb4");
 
-// dados
+// DADOS
 $nome = $conn->real_escape_string($_POST["nome_completo"] ?? "");
 $email = $conn->real_escape_string($_POST["email"] ?? "");
 $telefone = $conn->real_escape_string($_POST["telefone"] ?? "");
@@ -43,9 +53,33 @@ $motivacao_voluntariado = $conn->real_escape_string($_POST["motivacao_voluntaria
 
 $observacoes_adicionais = $conn->real_escape_string($_POST["observacoes_adicionais"] ?? "");
 
-// SQL
+$status_adm = "aguardando";
+
+// VERIFICA SE JÁ EXISTE INSCRIÇÃO
+$sqlVerifica = "
+SELECT id
+FROM voluntarios
+WHERE usuario_id = '$usuario_id'
+LIMIT 1
+";
+
+$resultadoVerifica = $conn->query($sqlVerifica);
+
+if ($resultadoVerifica->num_rows > 0) {
+
+    echo json_encode([
+        "sucesso" => false,
+        "mensagem" => "Você já possui uma candidatura em avaliação."
+    ]);
+
+    exit;
+}
+
+// INSERT
 $sql = "
 INSERT INTO voluntarios (
+
+    usuario_id,
     nome_completo,
     email,
     telefone,
@@ -57,9 +91,13 @@ INSERT INTO voluntarios (
     disponibilidade_horario,
     acesso_tecnologia,
     motivacao_voluntariado,
-    observacoes_adicionais
+    observacoes_adicionais,
+    status_adm
+
 )
 VALUES (
+
+    '$usuario_id',
     '$nome',
     '$email',
     '$telefone',
@@ -71,15 +109,18 @@ VALUES (
     '$disponibilidade_horario',
     '$acesso_tecnologia',
     '$motivacao_voluntariado',
-    '$observacoes_adicionais'
-) 
+    '$observacoes_adicionais',
+    '$status_adm'
+
+)
 ";
 
+// EXECUTA
 if ($conn->query($sql) === TRUE) {
 
     echo json_encode([
         "sucesso" => true,
-        "mensagem" => "Dados salvos"
+        "mensagem" => "Formulário enviado com sucesso"
     ]);
 
 } else {

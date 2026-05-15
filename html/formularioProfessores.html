@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -70,79 +71,6 @@
 
             </div>
 
-            <!-- FORM -->
-            <form id="main-form" method="POST">
-
-                <!-- NOME -->
-                <div class="field-group">
-
-                    <label for="nome_completo">
-                        Nome completo
-                    </label>
-
-                    <input
-                        type="text"
-                        id="nome_completo"
-                        name="nome_completo"
-                        placeholder="Seu nome completo"
-                        required
-                    >
-
-                </div>
-
-                <!-- EMAIL -->
-                <div class="field-group">
-
-                    <label for="email">
-                        E-mail
-                    </label>
-
-                    <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        placeholder="seu@email.com"
-                        required
-                    >
-
-                </div>
-
-                <!-- TELEFONE -->
-                <div class="field-group">
-
-                    <label for="telefone">
-                        Telefone / WhatsApp
-                    </label>
-
-                    <input
-                        type="tel"
-                        id="telefone"
-                        name="telefone"
-                        placeholder="(00) 00000-0000"
-                        required
-                    >
-
-                </div>
-
-                <!-- IDADE -->
-                <div class="field-group">
-
-                    <label for="idade">
-                        Idade
-                    </label>
-
-                    <input
-                        type="number"
-                        id="idade"
-                        name="idade"
-                        placeholder="Ex: 20"
-                        min="16"
-                        max="99"
-                        required
-                    >
-
-                </div>
-
                 <!-- SITUAÇÃO TI -->
                 <div class="field-group">
 
@@ -150,11 +78,7 @@
                         Você é estudante ou já concluiu algum curso na área de TI?
                     </label>
 
-                    <select
-                        id="situacao_ti"
-                        name="situacao_ti"
-                        required
-                    >
+                    <select id="situacao_ti" name="situacao_ti" required>
 
                         <option value="" disabled selected>
                             Selecione uma opção
@@ -190,12 +114,8 @@
                         </span>
                     </label>
 
-                    <input
-                        type="text"
-                        id="curso_detalhes"
-                        name="curso_detalhes"
-                        placeholder="Ex: ADS, Ciência da Computação..."
-                    >
+                    <input type="text" id="curso_detalhes" name="curso_detalhes"
+                        placeholder="Ex: ADS, Ciência da Computação...">
 
                 </div>
 
@@ -206,13 +126,8 @@
                         Quais conteúdos você se sente preparado para ensinar?
                     </label>
 
-                    <textarea
-                        id="conteudos_ensino"
-                        name="conteudos_ensino"
-                        rows="2"
-                        placeholder="Ex: HTML, CSS, Python..."
-                        required
-                    ></textarea>
+                    <textarea id="conteudos_ensino" name="conteudos_ensino" rows="2"
+                        placeholder="Ex: HTML, CSS, Python..." required></textarea>
 
                 </div>
 
@@ -223,11 +138,7 @@
                         Já teve experiência ensinando?
                     </label>
 
-                    <select
-                        id="experiencia_previa"
-                        name="experiencia_previa"
-                        required
-                    >
+                    <select id="experiencia_previa" name="experiencia_previa" required>
 
                         <option value="" disabled selected>
                             Selecione uma opção
@@ -256,15 +167,10 @@
                         Disponibilidade de horários
                     </label>
 
-                    <textarea
-                        id="disponibilidade_horario"
-                        name="disponibilidade_horario"
-                        rows="2"
-                        placeholder="Ex: noites e finais de semana"
-                        required
-                    ></textarea>
+                    <textarea id="disponibilidade_horario" name="disponibilidade_horario" rows="2"
+                        placeholder="Ex: noites e finais de semana" required></textarea>
 
-                </div> 
+                </div>
 
                 <!-- ACESSO -->
                 <div class="field-group">
@@ -273,11 +179,7 @@
                         Você possui computador e internet estável?
                     </label>
 
-                    <select
-                        id="acesso_tecnologia"
-                        name="acesso_tecnologia"
-                        required
-                    >
+                    <select id="acesso_tecnologia" name="acesso_tecnologia" required>
 
                         <option value="" disabled selected>
                             Selecione uma opção
@@ -306,13 +208,8 @@
                         Por que você quer ser voluntário?
                     </label>
 
-                    <textarea
-                        id="motivacao_voluntariado"
-                        name="motivacao_voluntariado"
-                        rows="3"
-                        placeholder="Conte sua motivação..."
-                        required
-                    ></textarea>
+                    <textarea id="motivacao_voluntariado" name="motivacao_voluntariado" rows="3"
+                        placeholder="Conte sua motivação..." required></textarea>
 
                 </div>
 
@@ -323,12 +220,8 @@
                         Observações adicionais
                     </label>
 
-                    <textarea
-                        id="observacoes_adicionais"
-                        name="observacoes_adicionais"
-                        rows="2"
-                        placeholder="Opcional"
-                    ></textarea>
+                    <textarea id="observacoes_adicionais" name="observacoes_adicionais" rows="2"
+                        placeholder="Opcional"></textarea>
 
                 </div>
 
@@ -352,11 +245,17 @@
                         Limpar formulário
                     </button>
 
+                    <div id="evaluation-result" class="evaluation-card" style="display: none;">
+                        <h2 id="result-title">Resultado da Pré-Avaliação</h2>
+                        <p id="result-message"></p>
+                        <div id="result-badge" class="badge"></div>
+                    </div>
+
                 </div>
 
             </form>
 
-        </div>
+        </div>                                                          
 
     </main>
 
@@ -364,4 +263,5 @@
     <script src="../js/formularioProfessores.js"></script>
 
 </body>
+
 </html>
