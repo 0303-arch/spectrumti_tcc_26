@@ -6,10 +6,11 @@ session_start();
 
 /*
 SIMULAÇÃO TEMPORÁRIA
-Depois virá do login
+Depois trocar pelo login real
 */
 $usuario_id = 1;
 
+// CONEXÃO
 $conn = new mysqli(
     "localhost",
     "root",
@@ -17,10 +18,12 @@ $conn = new mysqli(
     "spectrum"
 );
 
+// ERRO
 if ($conn->connect_error) {
 
     echo json_encode([
-        "erro" => "Erro conexão"
+        "sucesso" => false,
+        "mensagem" => "Erro conexão banco"
     ]);
 
     exit;
@@ -28,31 +31,38 @@ if ($conn->connect_error) {
 
 $conn->set_charset("utf8mb4");
 
+// BUSCA STATUS REAL
 $sql = "
-SELECT status_adm
+SELECT
+    status_adm
 FROM voluntarios
 WHERE usuario_id = '$usuario_id'
-ORDER BY id DESC
 LIMIT 1
 ";
 
 $resultado = $conn->query($sql);
 
-if ($resultado->num_rows > 0) {
-
-    $dados = $resultado->fetch_assoc();
-
-    echo json_encode([
-        "possuiFormulario" => true,
-        "status" => $dados["status_adm"]
-    ]);
-
-} else {
+// NÃO POSSUI FORMULÁRIO
+if ($resultado->num_rows === 0) {
 
     echo json_encode([
         "possuiFormulario" => false
     ]);
+
+    exit;
 }
+
+// PEGA DADOS
+$dados = $resultado->fetch_assoc();
+
+// DEBUG
+echo json_encode([
+
+    "possuiFormulario" => true,
+
+    "status" => $dados["status_adm"]
+
+]);
 
 $conn->close();
 

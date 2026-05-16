@@ -111,154 +111,243 @@ body {
     color: white;
 }
 
-/* ================= FORM CONTAINER ================= */
+/* ================= CONTAINER PRINCIPAL ================= */
+
 .form-container {
     width: 100%;
-    max-width: 620px;
-    padding: 40px 20px 60px;
+    max-width: 700px;
+    margin: 40px auto;
+    padding: 20px;
     display: flex;
-    flex-direction: column;
-    gap: 0;
+    justify-content: center;
 }
 
-/* ================= CARD DO FORMULÁRIO ================= */
+/* ================= CARD ================= */
+
 .form-wrapper {
-    background-color: #1e2c3a;
-    border-radius: 12px;
+    width: 100%;
+    background: #1e2c3a;
+    border-radius: 14px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.35);
     overflow: hidden;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
 }
 
-/* Cabeçalho do formulário */
+/* ================= HEADER ================= */
+
 .form-header {
-    padding: 28px 36px 20px;
+    padding: 35px 40px 25px;
     text-align: center;
-    border-bottom: 1px solid #2a3a4a;
+    border-bottom: 1px solid #2c3c4f;
 }
 
 .form-header h1 {
-    font-size: 22px;
+    color: #ffffff;
+    font-size: 36px;
+    margin-bottom: 18px;
     font-weight: 700;
-    color: white;
-    margin-bottom: 8px;
 }
 
 .form-header p {
-    font-size: 13px;
-    color: #7a8fa0;
-    line-height: 1.5;
+    color: #8ca3b8;
+    font-size: 16px;
+    line-height: 1.8;
 }
 
-/* Body do formulário */
-form {
-    padding: 24px 36px 32px;
+.form-header strong {
+    color: #dce7f2;
+}
+
+/* ================= FORM ================= */
+
+#main-form {
+    padding: 30px 40px 40px;
+
     display: flex;
     flex-direction: column;
-    gap: 18px;
+    gap: 22px;
 }
 
-/* ================= GRUPOS DE CAMPO ================= */
+/* ================= CAMPOS ================= */
+
 .field-group {
     display: flex;
     flex-direction: column;
-    gap: 7px;
+    gap: 10px;
 }
 
 .field-group label {
-    font-size: 14px;
-    font-weight: 500;
-    color: #d0dce8;
+    color: #d7e3ef;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.4;
 }
 
 .field-group input,
 .field-group textarea,
 .field-group select {
-    background-color: #253344;
-    border: 1px solid #2e3f52;
-    border-radius: 6px;
-    padding: 10px 14px;
-    font-size: 14px;
-    color: #c8d6e5;
-    outline: none;
     width: 100%;
-    font-family: 'Roboto', sans-serif;
-    transition: border-color 0.2s, background-color 0.2s;
-    resize: none;
+
+    background: #253447;
+    border: 1px solid #32465d;
+
+    border-radius: 8px;
+
+    padding: 14px 16px;
+
+    color: #ffffff;
+    font-size: 15px;
+
+    outline: none;
+
+    transition: 0.2s ease;
+
+    font-family: Arial, sans-serif;
 }
+
+/* Placeholder */
 
 .field-group input::placeholder,
 .field-group textarea::placeholder {
-    color: #4a6070;
+    color: #6f879b;
 }
+
+/* Focus */
 
 .field-group input:focus,
 .field-group textarea:focus,
 .field-group select:focus {
     border-color: #00a8ff;
-    background-color: #2a3d52;
+    background: #2b3d52;
 }
 
-/* Input de data */
-.field-group input[type="date"] {
-    color-scheme: dark;
+/* Textarea */
+
+.field-group textarea {
+    resize: vertical;
+    min-height: 90px;
+}
+
+/* ================= AVISO ================= */
+
+.aviso-voluntario {
+    background: #182736;
+
+    border-left: 4px solid #00a8ff;
+
+    padding: 16px 18px;
+
+    border-radius: 8px;
+
+    color: #a9bfd1;
+
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.aviso-voluntario strong {
+    color: #ffffff;
 }
 
 /* ================= BOTÕES ================= */
+
 .button-group {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 12px;
-    margin-top: 6px;
+    gap: 14px;
+
+    margin-top: 10px;
 }
 
 .btn-submit {
     width: 100%;
-    background-color: #2d4060;
+
+    background: #31476d;
     color: white;
+
     border: none;
-    padding: 13px;
-    border-radius: 6px;
-    font-size: 15px;
-    font-weight: 600;
+    border-radius: 8px;
+
+    padding: 15px;
+
+    font-size: 16px;
+    font-weight: 700;
+
     cursor: pointer;
-    letter-spacing: 0.4px;
-    transition: background-color 0.2s;
+
+    transition: 0.2s ease;
 }
 
 .btn-submit:hover {
-    background-color: #3a5278;
+    background: #3e5a89;
 }
 
 .btn-clear {
     background: transparent;
-    color: #7a8fa0;
-    border: none; 
+    border: none;
+
+    color: #7f97aa;
+
+    font-size: 14px;
+
     cursor: pointer;
-    font-size: 13px;
-    transition: color 0.2s;
+
+    transition: 0.2s ease;
 }
 
 .btn-clear:hover {
     color: white;
 }
 
-/* ================= AVISO VOLUNTÁRIO ================= */
-.aviso-voluntario {
-    background-color: #1a2a3a;
-    border-left: 3px solid #00a8ff;
-    border-radius: 6px;
-    padding: 12px 16px;
-    font-size: 13px;
-    color: #8aaabf;
-    line-height: 1.6;
+/* ================= STATUS ================= */
+
+.status-container-feedback {
+    padding: 50px 40px;
 }
 
-.aviso-voluntario strong {
-    color: #c8d6e5;
+.status-box {
+    border-radius: 10px;
+    padding: 30px;
+    text-align: center;
 }
 
-/* Cabeçalho — texto forte em destaque */
-.form-header strong {
-    color: #c8d6e5;
+.status-box h2 {
+    font-size: 28px;
+    margin-bottom: 14px;
+}
+
+.status-box p {
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+.waiting {
+    background: #1d3145;
+    border: 1px solid #2f5d88;
+}
+
+.rejected {
+    background: #3a1f1f;
+    border: 1px solid #a94444;
+}
+
+/* ================= RESPONSIVIDADE ================= */
+
+@media (max-width: 768px) {
+
+    .form-container {
+        padding: 10px;
+    }
+
+    .form-header {
+        padding: 28px 24px 20px;
+    }
+
+    .form-header h1 {
+        font-size: 28px;
+    }
+
+    #main-form {
+        padding: 25px 24px 30px;
+    }
+
 }

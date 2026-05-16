@@ -5,12 +5,29 @@ header("Content-Type: application/json; charset=UTF-8");
 session_start();
 
 /*
-SIMULAÇÃO TEMPORÁRIA
-Depois você pegará do login real
+========================================
+VALIDAÇÃO DE SESSÃO
+========================================
 */
-$usuario_id = 1;
 
-// CONEXÃO
+if (!isset($_SESSION["user_id"])) {
+
+    echo json_encode([
+        "sucesso" => false,
+        "mensagem" => "Usuário não autenticado"
+    ]);
+
+    exit;
+}
+
+$usuario_id = (int) $_SESSION["user_id"];
+
+/*
+========================================
+CONEXÃO BANCO
+========================================
+*/
+
 $conn = new mysqli(
     "localhost",
     "root",
@@ -18,7 +35,12 @@ $conn = new mysqli(
     "spectrum"
 );
 
-// ERRO CONEXÃO
+/*
+========================================
+ERRO CONEXÃO
+========================================
+*/
+
 if ($conn->connect_error) {
 
     echo json_encode([
@@ -32,58 +54,146 @@ if ($conn->connect_error) {
 
 $conn->set_charset("utf8mb4");
 
-// DADOS
-$nome = $conn->real_escape_string($_POST["nome_completo"] ?? "");
-$email = $conn->real_escape_string($_POST["email"] ?? "");
-$telefone = $conn->real_escape_string($_POST["telefone"] ?? "");
-$idade = intval($_POST["idade"] ?? 0);
+/*
+========================================
+BUSCA DADOS DO USUÁRIO LOGADO
+========================================
+*/
 
-$situacao_ti = $conn->real_escape_string($_POST["situacao_ti"] ?? "");
-$curso_detalhes = $conn->real_escape_string($_POST["curso_detalhes"] ?? "");
-
-$conteudos_ensino = $conn->real_escape_string($_POST["conteudos_ensino"] ?? "");
-
-$experiencia_previa = $conn->real_escape_string($_POST["experiencia_previa"] ?? "");
-
-$disponibilidade_horario = $conn->real_escape_string($_POST["disponibilidade_horario"] ?? "");
-
-$acesso_tecnologia = $conn->real_escape_string($_POST["acesso_tecnologia"] ?? "");
-
-$motivacao_voluntariado = $conn->real_escape_string($_POST["motivacao_voluntariado"] ?? "");
-
-$observacoes_adicionais = $conn->real_escape_string($_POST["observacoes_adicionais"] ?? "");
-
-$status_adm = "aguardando";
-
-// VERIFICA SE JÁ EXISTE INSCRIÇÃO
-$sqlVerifica = "
-SELECT id
-FROM voluntarios
-WHERE usuario_id = '$usuario_id'
+$sqlUsuario = "
+SELECT
+    nome,
+    email
+FROM usuarios
+WHERE id = ?
 LIMIT 1
 ";
 
-$resultadoVerifica = $conn->query($sqlVerifica);
+$stmtUsuario = $conn->prepare($sqlUsuario);
 
-if ($resultadoVerifica->num_rows > 0) {
+$stmtUsuario->bind_param("i", $usuario_id);
+
+$stmtUsuario->execute();
+
+$resultadoUsuario = $stmtUsuario->get_result();
+
+$usuario = $resultadoUsuario->fetch_assoc();
+
+if (!$usuario) {
 
     echo json_encode([
         "sucesso" => false,
-        "mensagem" => "Você já possui uma candidatura em avaliação."
+        "mensagem" => "Usuário não encontrado"
     ]);
 
     exit;
 }
 
-// INSERT
+/*
+========================================
+DADOS AUTOMÁTICOS
+========================================
+*/
+
+$nome = $usuario["nome"];
+$email = $usuario["email"];
+
+/*
+========================================
+DADOS DO FORMULÁRIO
+========================================
+*/
+
+$situacao_ti = trim($_POST["situacao_ti"] ?? "");
+
+$curso_detalhes = trim($_POST["curso_detalhes"] ?? "");
+
+$conteudos_ensino = trim($_POST["conteudos_ensino"] ?? "");
+
+$experiencia_previa = trim($_POST["experiencia_previa"] ?? "");
+
+$disponibilidade_horario = trim($_POST["disponibilidade_horario"] ?? "");
+
+$acesso_tecnologia = trim($_POST["acesso_tecnologia"] ?? "");
+
+$motivacao_voluntariado = trim($_POST["motivacao_voluntariado"] ?? "");
+
+$observacoes_adicionais = trim($_POST["observacoes_adicionais"] ?? "");
+
+/*
+========================================
+VALIDAÇÃO
+========================================
+*/
+
+if (
+    empty($situacao_ti) ||
+    empty($conteudos_ensino) ||
+    empty($experiencia_previa) ||
+    empty($disponibilidade_horario) ||
+    empty($acesso_tecnologia) ||
+    empty($motivacao_voluntariado)
+) {
+
+    echo json_encode([
+        "sucesso" => false,
+        "mensagem" => "Preencha todos os campos obrigatórios"
+    ]);
+
+    exit;
+}
+
+/*
+========================================
+STATUS INICIAL
+========================================
+*/
+
+$status_adm = "aguardando";
+
+/*
+========================================
+VERIFICA CANDIDATURA EXISTENTE
+========================================
+*/
+
+$sqlVerifica = "
+SELECT id
+FROM voluntarios
+WHERE usuario_id = ?
+LIMIT 1
+";
+
+$stmtVerifica = $conn->prepare($sqlVerifica);
+
+$stmtVerifica->bind_param("i", $usuario_id);
+
+$stmtVerifica->execute();
+
+$resultadoVerifica = $stmtVerifica->get_result();
+
+if ($resultadoVerifica->num_rows > 0) {
+
+    echo json_encode([
+        "sucesso" => false,
+        "mensagem" => "Você já possui uma candidatura em avaliação"
+    ]);
+
+    exit;
+}
+
+/*
+========================================
+INSERT
+========================================
+*/
+
 $sql = "
 INSERT INTO voluntarios (
 
     usuario_id,
     nome_completo,
     email,
-    telefone,
-    idade,
     situacao_ti,
     curso_detalhes,
     conteudos_ensino,
@@ -97,26 +207,49 @@ INSERT INTO voluntarios (
 )
 VALUES (
 
-    '$usuario_id',
-    '$nome',
-    '$email',
-    '$telefone',
-    '$idade',
-    '$situacao_ti',
-    '$curso_detalhes',
-    '$conteudos_ensino',
-    '$experiencia_previa',
-    '$disponibilidade_horario',
-    '$acesso_tecnologia',
-    '$motivacao_voluntariado',
-    '$observacoes_adicionais',
-    '$status_adm'
+    ?,
+    ?,
+    ?,
+    ?,
+    ?,
+    ?,
+    ?,
+    ?,
+    ?,
+    ?,
+    ?,
+    ?
 
 )
 ";
 
-// EXECUTA
-if ($conn->query($sql) === TRUE) {
+$stmt = $conn->prepare($sql);
+
+$stmt->bind_param(
+
+    "isssssssssss",
+
+    $usuario_id,
+    $nome,
+    $email,
+    $situacao_ti,
+    $curso_detalhes,
+    $conteudos_ensino,
+    $experiencia_previa,
+    $disponibilidade_horario,
+    $acesso_tecnologia,
+    $motivacao_voluntariado,
+    $observacoes_adicionais,
+    $status_adm
+);
+
+/*
+========================================
+EXECUTA
+========================================
+*/
+
+if ($stmt->execute()) {
 
     echo json_encode([
         "sucesso" => true,
@@ -127,10 +260,20 @@ if ($conn->query($sql) === TRUE) {
 
     echo json_encode([
         "sucesso" => false,
-        "mensagem" => "Erro SQL",
-        "erro" => $conn->error
+        "mensagem" => "Erro ao salvar candidatura",
+        "erro" => $stmt->error
     ]);
 }
+
+/*
+========================================
+FECHA CONEXÕES
+========================================
+*/
+
+$stmt->close();
+$stmtUsuario->close();
+$stmtVerifica->close();
 
 $conn->close();
 

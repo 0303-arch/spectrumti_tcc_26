@@ -11,7 +11,7 @@
 
 <body>
 
-    <!-- HEADER DO SITE -->
+    <!-- HEADER -->
     <header class="header">
 
         <div class="header-left">
@@ -52,24 +52,28 @@
 
         <div class="form-wrapper">
 
-            <div class="form-header">
+            <!-- FORM CORRETO -->
+            <form id="main-form" method="POST">
 
-                <h1>Quero ser Voluntário</h1>
+                <!-- HEADER FORM -->
+                <div class="form-header">
 
-                <p>
-                    Que incrível que você quer compartilhar seu conhecimento! 🎉
-                    <br><br>
+                    <h1>Quero ser Voluntário</h1>
 
-                    Este é um trabalho <strong>voluntário</strong>,
-                    sem remuneração financeira, em parceria com ONGs
-                    que levam educação em tecnologia a quem mais precisa.
+                    <p>
+                        Que incrível que você quer compartilhar seu conhecimento! 🎉
+                        <br><br>
 
-                    <br><br>
+                        Este é um trabalho <strong>voluntário</strong>,
+                        sem remuneração financeira, em parceria com ONGs
+                        que levam educação em tecnologia a quem mais precisa.
 
-                    Preencha as informações abaixo e entraremos em contato.
-                </p>
+                        <br><br>
 
-            </div>
+                        Preencha as informações abaixo e entraremos em contato.
+                    </p>
+
+                </div>
 
                 <!-- SITUAÇÃO TI -->
                 <div class="field-group">
@@ -114,8 +118,12 @@
                         </span>
                     </label>
 
-                    <input type="text" id="curso_detalhes" name="curso_detalhes"
-                        placeholder="Ex: ADS, Ciência da Computação...">
+                    <input
+                        type="text"
+                        id="curso_detalhes"
+                        name="curso_detalhes"
+                        placeholder="Ex: ADS, Ciência da Computação..."
+                    >
 
                 </div>
 
@@ -126,8 +134,13 @@
                         Quais conteúdos você se sente preparado para ensinar?
                     </label>
 
-                    <textarea id="conteudos_ensino" name="conteudos_ensino" rows="2"
-                        placeholder="Ex: HTML, CSS, Python..." required></textarea>
+                    <textarea
+                        id="conteudos_ensino"
+                        name="conteudos_ensino"
+                        rows="2"
+                        placeholder="Ex: HTML, CSS, Python..."
+                        required
+                    ></textarea>
 
                 </div>
 
@@ -138,7 +151,11 @@
                         Já teve experiência ensinando?
                     </label>
 
-                    <select id="experiencia_previa" name="experiencia_previa" required>
+                    <select
+                        id="experiencia_previa"
+                        name="experiencia_previa"
+                        required
+                    >
 
                         <option value="" disabled selected>
                             Selecione uma opção
@@ -167,8 +184,13 @@
                         Disponibilidade de horários
                     </label>
 
-                    <textarea id="disponibilidade_horario" name="disponibilidade_horario" rows="2"
-                        placeholder="Ex: noites e finais de semana" required></textarea>
+                    <textarea
+                        id="disponibilidade_horario"
+                        name="disponibilidade_horario"
+                        rows="2"
+                        placeholder="Ex: noites e finais de semana"
+                        required
+                    ></textarea>
 
                 </div>
 
@@ -179,7 +201,11 @@
                         Você possui computador e internet estável?
                     </label>
 
-                    <select id="acesso_tecnologia" name="acesso_tecnologia" required>
+                    <select
+                        id="acesso_tecnologia"
+                        name="acesso_tecnologia"
+                        required
+                    >
 
                         <option value="" disabled selected>
                             Selecione uma opção
@@ -208,8 +234,13 @@
                         Por que você quer ser voluntário?
                     </label>
 
-                    <textarea id="motivacao_voluntariado" name="motivacao_voluntariado" rows="3"
-                        placeholder="Conte sua motivação..." required></textarea>
+                    <textarea
+                        id="motivacao_voluntariado"
+                        name="motivacao_voluntariado"
+                        rows="3"
+                        placeholder="Conte sua motivação..."
+                        required
+                    ></textarea>
 
                 </div>
 
@@ -220,8 +251,12 @@
                         Observações adicionais
                     </label>
 
-                    <textarea id="observacoes_adicionais" name="observacoes_adicionais" rows="2"
-                        placeholder="Opcional"></textarea>
+                    <textarea
+                        id="observacoes_adicionais"
+                        name="observacoes_adicionais"
+                        rows="2"
+                        placeholder="Opcional"
+                    ></textarea>
 
                 </div>
 
@@ -245,17 +280,11 @@
                         Limpar formulário
                     </button>
 
-                    <div id="evaluation-result" class="evaluation-card" style="display: none;">
-                        <h2 id="result-title">Resultado da Pré-Avaliação</h2>
-                        <p id="result-message"></p>
-                        <div id="result-badge" class="badge"></div>
-                    </div>
-
                 </div>
 
             </form>
 
-        </div>                                                          
+        </div>
 
     </main>
 
