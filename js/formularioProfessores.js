@@ -1,16 +1,77 @@
 const formulario = document.getElementById("main-form");
 const formWrapper = document.querySelector(".form-wrapper");
 
-// VERIFICA STATUS AO ABRIR PÁGINA
+/*
+========================================
+VERIFICA STATUS AO ABRIR
+========================================
+*/
+
 document.addEventListener("DOMContentLoaded", async () => {
+
+    await verificarStatusProfessor();
+
+});
+
+/*
+========================================
+VERIFICA STATUS
+========================================
+*/
+
+async function verificarStatusProfessor() {
 
     try {
 
-        const resposta = await fetch("../backend/verificarStatusProfessor.php");
+        const resposta = await fetch(
+            "../backend/verificarStatusProfessor.php",
+            {
+                method: "GET",
+                credentials: "same-origin"
+            }
+        );
 
-        const dados = await resposta.json();
+        const texto = await resposta.text();
+
+        console.log("RESPOSTA STATUS:");
+        console.log(texto);
+
+        let dados;
+
+        try {
+
+            dados = JSON.parse(texto);
+
+        } catch (erroJson) {
+
+            console.error("JSON inválido:");
+            console.error(erroJson);
+
+            mostrarErroBackend(texto);
+
+            return;
+        }
 
         console.log(dados);
+
+        /*
+        ================================
+        NÃO LOGADO
+        ================================
+        */
+
+        if (dados.sucesso === false) {
+
+            alert(dados.mensagem || "Erro autenticação");
+
+            return;
+        }
+
+        /*
+        ================================
+        POSSUI FORMULÁRIO
+        ================================
+        */
 
         if (dados.possuiFormulario) {
 
@@ -20,13 +81,21 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     } catch (erro) {
 
+        console.error("Erro fetch status:");
         console.error(erro);
+
+        alert("Erro ao verificar status.");
 
     }
 
-});
+}
 
-// ENVIO FORMULÁRIO
+/*
+========================================
+ENVIO FORMULÁRIO
+========================================
+*/
+
 if (formulario) {
 
     formulario.addEventListener("submit", async (event) => {
@@ -37,14 +106,55 @@ if (formulario) {
 
         try {
 
-            const resposta = await fetch("../backend/enviarFormulario.php", {
-                method: "POST",
-                body: formData
-            });
+            const resposta = await fetch(
+                "../backend/enviarFormulario.php",
+                {
+                    method: "POST",
+                    body: formData,
+                    credentials: "same-origin"
+                }
+            );
 
-            const resultado = await resposta.json();
+            /*
+            ================================
+            TEXTO BRUTO
+            ================================
+            */
+
+            const texto = await resposta.text();
+
+            console.log("RESPOSTA FORM:");
+            console.log(texto);
+
+            /*
+            ================================
+            CONVERTE JSON
+            ================================
+            */
+
+            let resultado;
+
+            try {
+
+                resultado = JSON.parse(texto);
+
+            } catch (erroJson) {
+
+                console.error("JSON inválido:");
+                console.error(erroJson);
+
+                mostrarErroBackend(texto);
+
+                return;
+            }
 
             console.log(resultado);
+
+            /*
+            ================================
+            SUCESSO
+            ================================
+            */
 
             if (resultado.sucesso) {
 
@@ -52,12 +162,15 @@ if (formulario) {
 
             } else {
 
-                alert(resultado.mensagem);
+                alert(resultado.mensagem || "Erro no envio");
+
+                console.error(resultado);
 
             }
 
         } catch (erro) {
 
+            console.error("Erro fetch:");
             console.error(erro);
 
             alert("Erro ao enviar formulário.");
@@ -68,7 +181,12 @@ if (formulario) {
 
 }
 
-// CONTROLE VISUAL
+/*
+========================================
+TELAS POR STATUS
+========================================
+*/
+
 function renderizarTelaPorStatus(status) {
 
     if (!formWrapper) return;
@@ -79,22 +197,23 @@ function renderizarTelaPorStatus(status) {
 
     containerMsg.className = "status-container-feedback";
 
-    switch(status) {
+    switch (status) {
 
         case "aguardando":
 
             containerMsg.innerHTML = `
                 <div class="status-box waiting">
-                    <h2>Inscrição Recebida!</h2>
+
+                    <h2>Inscrição Recebida</h2>
 
                     <p>
-                        Muito obrigado pela disposição de ser um(a)
-                        professor(a) na SpectrumTI.
+                        Sua candidatura foi enviada.
                     </p>
 
                     <p>
-                        Aguarde a avaliação do time administrativo.
+                        Aguarde avaliação da administração.
                     </p>
+
                 </div>
             `;
 
@@ -108,13 +227,12 @@ function renderizarTelaPorStatus(status) {
                     <h2>Inscrição Encerrada</h2>
 
                     <p>
-                        Parece que você ainda não possui alguns
-                        requisitos necessários para lecionar na SpectrumTI.
+                        Sua candidatura não foi aprovada.
                     </p>
 
                     <button
-                        onclick="window.location.reload();"
                         class="btn-submit"
+                        onclick="window.location.reload();"
                     >
                         Tentar novamente
                     </button>
@@ -126,7 +244,7 @@ function renderizarTelaPorStatus(status) {
 
         case "aprovado":
 
-            window.location.href = "perfil_professor.html";
+            window.location.href = "perfil_professor.php";
 
             return;
 
@@ -138,12 +256,11 @@ function renderizarTelaPorStatus(status) {
                     <h2>Pré-aprovado</h2>
 
                     <p>
-                        Você foi aprovado, porém ainda possui algumas
-                        limitações identificadas pelo time avaliador.
+                        Você foi aprovado com limitações.
                     </p>
 
                     <p>
-                        Em breve entraremos em contato.
+                        Aguarde contato da administração.
                     </p>
 
                 </div>
@@ -153,12 +270,38 @@ function renderizarTelaPorStatus(status) {
 
         default:
 
-            window.location.reload();
+            containerMsg.innerHTML = `
+                <div class="status-box rejected">
 
-            return;
+                    <h2>Status desconhecido</h2>
+
+                    <p>
+                        Recarregue a página.
+                    </p>
+
+                </div>
+            `;
 
     }
 
     formWrapper.appendChild(containerMsg);
+
+}
+
+/*
+========================================
+MOSTRA ERRO PHP
+========================================
+*/
+
+function mostrarErroBackend(texto) {
+
+    console.error("BACKEND RETORNOU:");
+    console.error(texto);
+
+    alert(
+        "O backend retornou erro PHP.\n\n" +
+        "Abra F12 > Network > Response."
+    );
 
 }

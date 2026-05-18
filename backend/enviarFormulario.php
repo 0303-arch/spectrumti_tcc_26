@@ -1,12 +1,17 @@
 <?php
 
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
+
 header("Content-Type: application/json; charset=UTF-8");
 
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
 /*
 ========================================
-VALIDAÇÃO DE SESSÃO
+VALIDAÇÃO LOGIN
 ========================================
 */
 
@@ -24,7 +29,7 @@ $usuario_id = (int) $_SESSION["user_id"];
 
 /*
 ========================================
-CONEXÃO BANCO
+CONEXÃO
 ========================================
 */
 
@@ -34,12 +39,6 @@ $conn = new mysqli(
     "",
     "spectrum"
 );
-
-/*
-========================================
-ERRO CONEXÃO
-========================================
-*/
 
 if ($conn->connect_error) {
 
@@ -56,7 +55,7 @@ $conn->set_charset("utf8mb4");
 
 /*
 ========================================
-BUSCA DADOS DO USUÁRIO LOGADO
+BUSCA DADOS USUÁRIO
 ========================================
 */
 
@@ -70,6 +69,17 @@ LIMIT 1
 ";
 
 $stmtUsuario = $conn->prepare($sqlUsuario);
+
+if (!$stmtUsuario) {
+
+    echo json_encode([
+        "sucesso" => false,
+        "mensagem" => "Erro prepare usuário",
+        "erro" => $conn->error
+    ]);
+
+    exit;
+}
 
 $stmtUsuario->bind_param("i", $usuario_id);
 
@@ -89,55 +99,21 @@ if (!$usuario) {
     exit;
 }
 
-/*
-========================================
-DADOS AUTOMÁTICOS
-========================================
-*/
-
-$nome = $usuario["nome"];
-$email = $usuario["email"];
+$nome = trim($usuario["nome"]);
+$email = trim($usuario["email"]);
 
 /*
 ========================================
-DADOS DO FORMULÁRIO
+DEBUG POST
 ========================================
 */
 
-$situacao_ti = trim($_POST["situacao_ti"] ?? "");
-
-$curso_detalhes = trim($_POST["curso_detalhes"] ?? "");
-
-$conteudos_ensino = trim($_POST["conteudos_ensino"] ?? "");
-
-$experiencia_previa = trim($_POST["experiencia_previa"] ?? "");
-
-$disponibilidade_horario = trim($_POST["disponibilidade_horario"] ?? "");
-
-$acesso_tecnologia = trim($_POST["acesso_tecnologia"] ?? "");
-
-$motivacao_voluntariado = trim($_POST["motivacao_voluntariado"] ?? "");
-
-$observacoes_adicionais = trim($_POST["observacoes_adicionais"] ?? "");
-
-/*
-========================================
-VALIDAÇÃO
-========================================
-*/
-
-if (
-    empty($situacao_ti) ||
-    empty($conteudos_ensino) ||
-    empty($experiencia_previa) ||
-    empty($disponibilidade_horario) ||
-    empty($acesso_tecnologia) ||
-    empty($motivacao_voluntariado)
-) {
+if (empty($_POST)) {
 
     echo json_encode([
         "sucesso" => false,
-        "mensagem" => "Preencha todos os campos obrigatórios"
+        "mensagem" => "POST vazio",
+        "debug" => $_POST
     ]);
 
     exit;
@@ -145,15 +121,53 @@ if (
 
 /*
 ========================================
-STATUS INICIAL
+DADOS FORMULÁRIO
 ========================================
 */
 
-$status_adm = "aguardando";
+$situacao_ti = trim($_POST["situacao_ti"] ?? "");
+$curso_detalhes = trim($_POST["curso_detalhes"] ?? "");
+$conteudos_ensino = trim($_POST["conteudos_ensino"] ?? "");
+$experiencia_previa = trim($_POST["experiencia_previa"] ?? "");
+$disponibilidade_horario = trim($_POST["disponibilidade_horario"] ?? "");
+$acesso_tecnologia = trim($_POST["acesso_tecnologia"] ?? "");
+$motivacao_voluntariado = trim($_POST["motivacao_voluntariado"] ?? "");
+$observacoes_adicionais = trim($_POST["observacoes_adicionais"] ?? "");
 
 /*
 ========================================
-VERIFICA CANDIDATURA EXISTENTE
+VALIDAÇÃO CAMPOS
+========================================
+*/
+
+$camposObrigatorios = [
+
+    "situacao_ti" => $situacao_ti,
+    "conteudos_ensino" => $conteudos_ensino,
+    "experiencia_previa" => $experiencia_previa,
+    "disponibilidade_horario" => $disponibilidade_horario,
+    "acesso_tecnologia" => $acesso_tecnologia,
+    "motivacao_voluntariado" => $motivacao_voluntariado
+
+];
+
+foreach ($camposObrigatorios as $campo => $valor) {
+
+    if (empty($valor)) {
+
+        echo json_encode([
+            "sucesso" => false,
+            "mensagem" => "Campo obrigatório vazio",
+            "campo" => $campo
+        ]);
+
+        exit;
+    }
+}
+
+/*
+========================================
+VERIFICA CANDIDATURA
 ========================================
 */
 
@@ -166,6 +180,17 @@ LIMIT 1
 
 $stmtVerifica = $conn->prepare($sqlVerifica);
 
+if (!$stmtVerifica) {
+
+    echo json_encode([
+        "sucesso" => false,
+        "mensagem" => "Erro prepare verificação",
+        "erro" => $conn->error
+    ]);
+
+    exit;
+}
+
 $stmtVerifica->bind_param("i", $usuario_id);
 
 $stmtVerifica->execute();
@@ -176,7 +201,7 @@ if ($resultadoVerifica->num_rows > 0) {
 
     echo json_encode([
         "sucesso" => false,
-        "mensagem" => "Você já possui uma candidatura em avaliação"
+        "mensagem" => "Você já possui candidatura"
     ]);
 
     exit;
@@ -184,11 +209,19 @@ if ($resultadoVerifica->num_rows > 0) {
 
 /*
 ========================================
+STATUS
+========================================
+*/
+
+$status_adm = "aguardando";
+
+/*
+========================================
 INSERT
 ========================================
 */
 
-$sql = "
+$sqlInsert = "
 INSERT INTO voluntarios (
 
     usuario_id,
@@ -207,25 +240,25 @@ INSERT INTO voluntarios (
 )
 VALUES (
 
-    ?,
-    ?,
-    ?,
-    ?,
-    ?,
-    ?,
-    ?,
-    ?,
-    ?,
-    ?,
-    ?,
-    ?
+    ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
 
 )
 ";
 
-$stmt = $conn->prepare($sql);
+$stmtInsert = $conn->prepare($sqlInsert);
 
-$stmt->bind_param(
+if (!$stmtInsert) {
+
+    echo json_encode([
+        "sucesso" => false,
+        "mensagem" => "Erro prepare insert",
+        "erro" => $conn->error
+    ]);
+
+    exit;
+}
+
+$stmtInsert->bind_param(
 
     "isssssssssss",
 
@@ -241,39 +274,42 @@ $stmt->bind_param(
     $motivacao_voluntariado,
     $observacoes_adicionais,
     $status_adm
+
 );
+
+$executou = $stmtInsert->execute();
 
 /*
 ========================================
-EXECUTA
+RESULTADO
 ========================================
 */
 
-if ($stmt->execute()) {
+if ($executou) {
 
     echo json_encode([
         "sucesso" => true,
-        "mensagem" => "Formulário enviado com sucesso"
+        "mensagem" => "Candidatura enviada"
     ]);
 
 } else {
 
     echo json_encode([
         "sucesso" => false,
-        "mensagem" => "Erro ao salvar candidatura",
-        "erro" => $stmt->error
+        "mensagem" => "Erro insert",
+        "erro" => $stmtInsert->error
     ]);
 }
 
 /*
 ========================================
-FECHA CONEXÕES
+FECHA
 ========================================
 */
 
-$stmt->close();
 $stmtUsuario->close();
 $stmtVerifica->close();
+$stmtInsert->close();
 
 $conn->close();
 
