@@ -4,66 +4,78 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Spectrum Ti</title>
+    <title>Spectrum TI</title>
     <link rel="stylesheet" href="index.css">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 </head>
 
 <body>
+
+    <!-- HEADER -->
     <header>
+        <div class="header-left">
+            <div class="site-logo">
+                <div class="logo-icon">S</div>
+            </div>
+            <div class="siteName"><p>SpectrumTI</p></div>
+        </div>
+
         <nav class="navbar">
-            <a href="html/cadastro.html" class="cadastrar">Cadastro</a>
-            <a href="html/login.html" class="login">Login</a>
+            <a href="#sobre">Minha Página</a>
+            <a href="#equipe">Meus Certificados</a>
+            <a href="#">Ensine na Spectrum</a>
         </nav>
 
-        <div class="siteName">
-            <p>SPECTRUM TI</p>
+        <div class="header-right">
+            <span class="header-greeting">Olá, Visitante</span>
+            <a href="html/login.html" class="avatar-btn" title="Login">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+            </a>
         </div>
     </header>
 
-
-
-
+    <!-- HERO -->
     <div class="principalContainer">
-
         <div class="titulo">
-            <h1>SPECTRUM TI</h1>
-            <p>Bem-vindo ao portal oficial do Grupo Spectrum.
-                Somos um time de estudantes do curso de Desenvolvimento de Sistemas da ETEC, unidos pela paixão por
-                transformar ideias em soluções digitais.</p>
-
+            <div class="hero-eyebrow">Plataforma inclusiva</div>
+            <h1>Tecnologia para <span class="highlight">todas</span> as mentes.</h1>
+            <p>Bem-vindo ao portal do Grupo Spectrum. Somos estudantes do curso de Desenvolvimento de Sistemas da ETEC, unidos pela missão de transformar o ensino de TI em algo acessível para todos.</p>
             <a href="../Tela Cursos/telaCursos.html">
                 <button class="button-74" role="button">Veja nossos Cursos</button>
             </a>
-
-
         </div>
 
 
-
-
-        <img class="img1" src="./Imagens/oficial.png" alt="imagem sobre aprendizade de T.I">
-
     </div>
 
-    <section class="sobre-nos">
-        <div class="sobre-container">
+    <!-- SOBRE -->
+    <section class="sobre-nos" id="sobre">
+        <div class="sobre-container reveal">
+
+            <div class="sobre-decoracao">
+                <div class="caixa-destaque">
+                    <span class="ano-destaque">2026</span>
+                    <p>Inclusão · TI</p>
+                </div>
+            </div>
+
             <div class="sobre-content">
-                <h2 class="sobre-titulo" id="sobre">Sobre o Grupo <span>Spectrum</span></h2>
+                <div class="accent-line">O Projeto</div>
+                <h2 class="sobre-titulo">Sobre o Grupo <span>Spectrum</span></h2>
+
+                <div class="sobre-quote">
+                    <p>O <strong>Grupo Spectrum</strong> nasceu da convicção de que a tecnologia deve ser um campo inclusivo e acessível para todos.</p>
+                </div>
+
                 <p class="sobre-texto">
-                    O <strong>Grupo Spectrum</strong> nasceu da convicção de que a tecnologia deve ser um campo
-                    inclusivo e acessível.
-                    Nosso projeto é dedicado a <strong>pessoas neurodivergentes</strong> e estudantes com
-                    <strong>dificuldades de aprendizagem</strong>
-                    que desejam ingressar no mundo da tecnologia, mas que muitas vezes enfrentam barreiras no modelo de
-                    ensino tradicional.
+                    Nosso projeto é dedicado a <strong>pessoas neurodivergentes</strong> e estudantes com <strong>dificuldades de aprendizagem</strong> que desejam ingressar no mundo da tecnologia, mas que muitas vezes enfrentam barreiras no modelo de ensino tradicional.
                 </p>
                 <p class="sobre-texto">
-                    Acreditamos que a neurodivergência traz perspectivas únicas e valiosas para a resolução de problemas
-                    complexos na área de TI.
-                    Nosso sistema foi desenhado para respeitar diferentes ritmos e formas de processar informações,
-                    transformando o potencial de cada usuário em oportunidade real.
+                    Acreditamos que a neurodivergência traz perspectivas únicas e valiosas para a resolução de problemas complexos na área de TI. Nosso sistema foi desenhado para respeitar diferentes ritmos e formas de processar informações.
                 </p>
 
                 <div class="etec-info">
@@ -72,79 +84,71 @@
                 </div>
             </div>
 
-            <div class="sobre-decoracao">
-                <div class="caixa-destaque">
-                    <span class="ano-destaque">2026</span>
-                    <p>Inovação & Inclusão</p>
-                </div>
-            </div>
         </div>
     </section>
 
+    <!-- EQUIPE -->
     <section class="equipe-section" id="equipe">
         <div class="container-equipe">
-            <h2 class="titulo-equipe">Nossa <span>Equipe</span></h2>
-            <p class="subtitulo-equipe">Os desenvolvedores por trás do projeto Spectrum TI.</p>
+            <div class="accent-line center reveal">Desenvolvedores</div>
+            <h2 class="titulo-equipe reveal">Nossa <span>Equipe</span></h2>
+            <p class="subtitulo-equipe reveal">Os desenvolvedores por trás do projeto Spectrum TI.</p>
 
-            <div class="swiper mySwiper">
+            <div class="swiper mySwiper reveal">
                 <div class="swiper-wrapper">
 
-                    <!-- CARD 1 -->
                     <div class="swiper-slide">
-                        <div class="card-integrante">
+                        <article class="card-integrante">
                             <div class="foto-container">
-                                <img src="./Imagens/fotogb.png" alt="Gabriel">
+                                <img src="./Imagens/fotogb.png" alt="Gabriel Felipe">
                             </div>
                             <div class="info-integrante" id="desenvolvedor">
                                 <h3>Gabriel Felipe</h3>
-                                <span>Desenvolvedor FrontEnd</span>
+                                <span>Desenvolvedor Front-End</span>
                                 <div class="redes-integrante">
-                                    <a href="https://www.linkedin.com/in/gabriel-felipe-leme-lazaro-0baa15350/">LinkedIn</a>
-                                    <a href="https://github.com/Gabrielfllazaro">GitHub</a>
+                                    <a href="https://www.linkedin.com/in/gabriel-felipe-leme-lazaro-0baa15350/" target="_blank">LinkedIn</a>
+                                    <a href="https://github.com/Gabrielfllazaro" target="_blank">GitHub</a>
                                 </div>
                             </div>
-                        </div>
+                        </article>
                     </div>
 
-                    <!-- CARD 2 -->
                     <div class="swiper-slide">
-                        <div class="card-integrante">
+                        <article class="card-integrante">
                             <div class="foto-container">
-                                <img src="./Imagens/favicon.ico" alt="João">
+                                <img src="./Imagens/favicon.ico" alt="João Rafael">
                             </div>
                             <div class="info-integrante" id="desenvolvedor">
                                 <h3>João Rafael</h3>
-                                <span>Desenvolvedor FrontEnd</span>
+                                <span>Desenvolvedor Front-End</span>
                                 <div class="redes-integrante">
                                     <a href="#">LinkedIn</a>
                                     <a href="#">GitHub</a>
                                 </div>
                             </div>
-                        </div>
+                        </article>
                     </div>
 
-                    <!-- CARD 3 -->
                     <div class="swiper-slide">
-                        <div class="card-integrante">
+                        <article class="card-integrante">
                             <div class="foto-container">
-                                <img src="./Imagens/favicon.ico" alt="Lucas">
+                                <img src="./Imagens/favicon.ico" alt="Lucas Machado">
                             </div>
                             <div class="info-integrante" id="desenvolvedor">
                                 <h3>Lucas Machado</h3>
-                                <span>Desenvolvedor Back</span>
+                                <span>Desenvolvedor Back-End</span>
                                 <div class="redes-integrante">
                                     <a href="#">LinkedIn</a>
                                     <a href="#">GitHub</a>
                                 </div>
                             </div>
-                        </div>
+                        </article>
                     </div>
 
-                    <!-- CARD 4 -->
                     <div class="swiper-slide">
-                        <div class="card-integrante">
+                        <article class="card-integrante">
                             <div class="foto-container">
-                                <img src="./Imagens/favicon.ico" alt="Kamilly">
+                                <img src="./Imagens/favicon.ico" alt="Kamilly Santos">
                             </div>
                             <div class="info-integrante" id="design1">
                                 <h3>Kamilly Santos</h3>
@@ -154,14 +158,13 @@
                                     <a href="#">GitHub</a>
                                 </div>
                             </div>
-                        </div>
+                        </article>
                     </div>
 
-                    <!-- CARD 5 -->
                     <div class="swiper-slide">
-                        <div class="card-integrante">
+                        <article class="card-integrante">
                             <div class="foto-container">
-                                <img src="./Imagens/favicon.ico" alt="Kaffer">
+                                <img src="./Imagens/favicon.ico" alt="Kaffer Dias">
                             </div>
                             <div class="info-integrante" id="design1">
                                 <h3>Kaffer Dias</h3>
@@ -171,12 +174,10 @@
                                     <a href="#">GitHub</a>
                                 </div>
                             </div>
-                        </div>
+                        </article>
                     </div>
 
                 </div>
-
-                <!-- CONTROLES -->
                 <div class="swiper-button-next"></div>
                 <div class="swiper-button-prev"></div>
                 <div class="swiper-pagination"></div>
@@ -184,45 +185,39 @@
         </div>
     </section>
 
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-
+    <!-- CONTATO -->
     <section class="contato-section" id="contato">
-        <div class="contato-container">
-
+        <div class="contato-container reveal">
+            <div class="accent-line center">Fale Conosco</div>
             <h2 class="contato-titulo">Entre em <span>Contato</span></h2>
-            <p class="contato-subtitulo">
-                Tem alguma dúvida ou sugestão? Fale com a equipe Spectrum TI.
-            </p>
+            <p class="contato-subtitulo">Tem alguma dúvida ou sugestão? Fale com a equipe Spectrum TI.</p>
 
             <div class="contato-content">
-
-                <!-- FORMULÁRIO -->
                 <form class="contato-form" id="forms">
-                    <input type="text" placeholder="Seu nome" required>
-                    <input type="email" placeholder="Seu email" required>
-                    <textarea placeholder="Sua mensagem" rows="5" required></textarea>
+                    <input type="text" placeholder="Seu nome" aria-label="Seu nome" required>
+                    <input type="email" placeholder="Seu email" aria-label="Seu email" required>
+                    <textarea placeholder="Sua mensagem" rows="5" aria-label="Sua mensagem" required></textarea>
                     <button type="submit">Enviar mensagem</button>
                 </form>
 
-                <!-- INFORMAÇÕES -->
                 <div class="contato-info">
                     <h3>Informações</h3>
-                    <p>Email: contato@spectrumti.com</p>
-                    <p>Local: São Paulo - SP</p>
-
+                    <p><span class="info-icon">✉</span> contato@spectrumti.com</p>
+                    <p><span class="info-icon">📍</span> São Paulo - SP</p>
                     <div class="contato-social">
                         <a href="#">GitHub</a>
                         <a href="#">LinkedIn</a>
                         <a href="#">Instagram</a>
                     </div>
                 </div>
-
             </div>
         </div>
     </section>
 
+    <!-- FOOTER -->
     <footer class="footer-spectrum">
         <div class="footer-container">
+
             <div class="footer-col">
                 <h2 class="footer-logo">SPECTRUM<span>TI</span></h2>
                 <p>Transformando ideias em soluções digitais.</p>
@@ -248,7 +243,7 @@
                 <h3>Apoio</h3>
                 <ul>
                     <li><a href="https://github.com/Gabrielfllazaro/ProjetoTCC" target="_blank">Documentação</a></li>
-                    <li><a href="https://etecia.com.br/">ETEC</a></li>
+                    <li><a href="https://etecia.com.br/" target="_blank">ETEC</a></li>
                     <li><a href="#contato">Contato</a></li>
                 </ul>
             </div>
@@ -258,16 +253,30 @@
                 <ul>
                     <li><a href="#desenvolvedor">Desenvolvedores</a></li>
                     <li><a href="#design1">Designers</a></li>
-                    <li><a href="https://github.com/Gabrielfllazaro/ProjetoTCC">Repositório</a></li>
+                    <li><a href="https://github.com/Gabrielfllazaro/ProjetoTCC" target="_blank">Repositório</a></li>
                 </ul>
             </div>
-        </div>
 
+        </div>
         <div class="footer-bottom">
-            <p>&copy; 2026 Grupo Spectrum - Desenvolvimento de Sistemas ETEC. Todos os direitos reservados.</p>
+            <p>&copy; 2026 Grupo Spectrum · Desenvolvimento de Sistemas ETEC · Todos os direitos reservados.</p>
         </div>
     </footer>
-    <script src="./js/carrosel.js"></script>
-</body>
 
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="./js/carrosel.js"></script>
+    <script>
+        const reveals = document.querySelectorAll('.reveal');
+        const io = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    e.target.classList.add('visible');
+                    io.unobserve(e.target);
+                }
+            });
+        }, { threshold: 0.1 });
+        reveals.forEach(el => io.observe(el));
+    </script>
+
+</body>
 </html>
