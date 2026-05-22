@@ -18,76 +18,259 @@
     <!-- HEADER -->
     <header>
         <div class="header-left">
-            <div class="site-logo">
-                <div class="logo-icon">S</div>
+            <div class="logo-icon">
+                <img src="./Imagens/logo.png" alt="Logo Spectrum TI">
             </div>
             <div class="siteName"><p>SpectrumTI</p></div>
         </div>
-
         <nav class="navbar">
-            <a href="#sobre">Minha Página</a>
-            <a href="#equipe">Meus Certificados</a>
-            <a href="#">Ensine na Spectrum</a>
+            <a href="html/cadastro.html" class="cadastrar">Cadastro</a>
+            <a href="html/login.html" class="login">Login</a>
         </nav>
-
-        <div class="header-right">
-            <span class="header-greeting">Olá, Visitante</span>
-            <a href="html/login.html" class="avatar-btn" title="Login">
-                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
-            </a>
-        </div>
     </header>
 
-    <!-- HERO -->
-    <div class="principalContainer">
-        <div class="titulo">
-            <div class="hero-eyebrow">Plataforma inclusiva</div>
-            <h1>Tecnologia para <span class="highlight">todas</span> as mentes.</h1>
-            <p>Bem-vindo ao portal do Grupo Spectrum. Somos estudantes do curso de Desenvolvimento de Sistemas da ETEC, unidos pela missão de transformar o ensino de TI em algo acessível para todos.</p>
-            <a href="../Tela Cursos/telaCursos.html">
-                <button class="button-74" role="button">Veja nossos Cursos</button>
-            </a>
+    <!-- ═══ HERO ═══ -->
+    <section class="hero">
+        <div class="hero-inner">
+            <div class="hero-eyebrow">Plataforma inclusiva de TI</div>
+            <h1>Aprenda tecnologia <span class="highlight">do seu jeito.</span></h1>
+            <p>Trilhas de aprendizado organizadas, acessíveis e pensadas para diferentes formas de aprender — incluindo a sua.</p>
+            <div class="hero-actions">
+                <a href="html/cadastro.html" class="btn-primary">Criar conta grátis</a>
+                <a href="#como-funciona" class="btn-ghost">Como funciona →</a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat">
+                    <span class="stat-num">100%</span>
+                    <span class="stat-label">Gratuito</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat">
+                    <span class="stat-num">∞</span>
+                    <span class="stat-label">Trilhas disponíveis</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat">
+                    <span class="stat-num">♿</span>
+                    <span class="stat-label">Totalmente acessível</span>
+                </div>
+            </div>
         </div>
+    </section>
+
+    <!-- ═══ COMO FUNCIONA ═══ -->
+    <section class="como-funciona" id="como-funciona">
+        <div class="section-inner reveal">
+            <div class="accent-line center">Simples assim</div>
+            <h2 class="section-titulo">Em <span>3 passos</span> você começa</h2>
+
+            <div class="passos-grid">
+                <div class="passo-card">
+                    <div class="passo-num">01</div>
+                    <div class="passo-icon">🔍</div>
+                    <h3>Escolha uma trilha</h3>
+                    <p>Navegue por categorias e filtre por duração. Encontre o conteúdo que combina com você.</p>
+                </div>
+                <div class="passo-seta">→</div>
+                <div class="passo-card">
+                    <div class="passo-num">02</div>
+                    <div class="passo-icon">▶️</div>
+                    <h3>Aprenda no seu ritmo</h3>
+                    <p>Acesse aulas em vídeo e texto. Sem pressão de tempo. Pause e continue quando quiser.</p>
+                </div>
+                <div class="passo-seta">→</div>
+                <div class="passo-card">
+                    <div class="passo-num">03</div>
+                    <div class="passo-icon">🎓</div>
+                    <h3>Receba seu certificado</h3>
+                    <p>Conclua a trilha e baixe seu certificado em PDF — com carga horária e data de conclusão.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ FUNCIONALIDADES ═══ -->
+    <section class="funcionalidades" id="funcionalidades">
+        <div class="section-inner reveal">
+            <div class="accent-line center">O que você encontra aqui</div>
+            <h2 class="section-titulo">Tudo que você precisa <span>para aprender</span></h2>
+
+            <div class="func-grid">
+                <div class="func-card">
+                    <div class="func-icon">📚</div>
+                    <h3>Trilhas organizadas</h3>
+                    <p>Conteúdo dividido em etapas claras. Sem sobrecarga de informação.</p>
+                </div>
+                <div class="func-card">
+                    <div class="func-icon">📊</div>
+                    <h3>Acompanhe seu progresso</h3>
+                    <p>Veja onde você está: <strong>Não iniciado → Em andamento → Concluído.</strong></p>
+                </div>
+                <div class="func-card">
+                    <div class="func-icon">❤️</div>
+                    <h3>Salve favoritos</h3>
+                    <p>Guarde as trilhas que mais te interessam e acesse quando quiser.</p>
+                </div>
+                <div class="func-card">
+                    <div class="func-icon">🔍</div>
+                    <h3>Busca com filtros</h3>
+                    <p>Filtre por categoria, duração e trilhas favoritas. Encontre rápido.</p>
+                </div>
+                <div class="func-card">
+                    <div class="func-icon">🎓</div>
+                    <h3>Certificado automático</h3>
+                    <p>Ao concluir, seu certificado é gerado na hora — pronto para baixar em PDF.</p>
+                </div>
+                <div class="func-card">
+                    <div class="func-icon">🎯</div>
+                    <h3>Trilhas recomendadas</h3>
+                    <p>A plataforma sugere trilhas com base nos seus interesses e histórico.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ ACESSIBILIDADE ═══ -->
+    <section class="acessibilidade" id="acessibilidade">
+        <div class="section-inner reveal">
+            <div class="accent-line center">Diferencial</div>
+            <h2 class="section-titulo">Feito para funcionar <span>do seu jeito</span></h2>
+            <p class="section-subtitulo">A plataforma conta com recursos de acessibilidade que permitem personalização visual conforme a necessidade do usuário.</p>
+
+            <div class="modos-grid">
+                <div class="modo-card">
+                    <span class="modo-emoji">🏠</span>
+                    <strong>Padrão</strong>
+                    <p>Visual limpo e equilibrado</p>
+                </div>
+                <div class="modo-card">
+                    <span class="modo-emoji">◑</span>
+                    <strong>Contraste</strong>
+                    <p>Alto contraste para melhor leitura</p>
+                </div>
+                <div class="modo-card">
+                    <span class="modo-emoji">📖</span>
+                    <strong>Dislexia</strong>
+                    <p>Fonte e espaçamento adaptados</p>
+                </div>
+                <div class="modo-card">
+                    <span class="modo-emoji">🌙</span>
+                    <strong>Noturno</strong>
+                    <p>Fundo escuro, menos cansaço visual</p>
+                </div>
+                <div class="modo-card">
+                    <span class="modo-emoji">📄</span>
+                    <strong>Leitura</strong>
+                    <p>Foco total no conteúdo</p>
+                </div>
+            </div>
+
+            <div class="acess-extra reveal">
+                <p>Inclui personalização de <strong>contraste, fontes, espaçamento e modos de leitura</strong> — tudo salvo para quando você voltar.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ PARA QUEM É ═══ -->
+    <section class="para-quem" id="para-quem">
+        <div class="section-inner reveal">
+            <div class="accent-line center">Público alvo</div>
+            <h2 class="section-titulo">O Spectrum TI <span>é para você</span></h2>
+
+            <div class="publico-grid">
+                <div class="publico-card">
+                    <span class="publico-emoji">🚀</span>
+                    <h3>Alunos iniciantes</h3>
+                    <p>Começando do zero em TI? Aqui você encontra um caminho claro, organizado e sem jargões desnecessários.</p>
+                </div>
+                <div class="publico-card">
+                    <span class="publico-emoji">🔄</span>
+                    <h3>Dificuldade de adaptação</h3>
+                    <p>Se o modelo de ensino tradicional não funciona para você, a plataforma se adapta — não o contrário.</p>
+                </div>
+                <div class="publico-card">
+                    <span class="publico-emoji">🧘</span>
+                    <h3>Ambientes menos poluídos</h3>
+                    <p>Prefere interfaces limpas, sem distrações e com foco no conteúdo? O Spectrum TI foi feito pensando nisso.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ CERTIFICADO ═══ -->
+    <section class="certificado-section" id="certificado">
+        <div class="section-inner reveal">
+            <div class="cert-content">
+                <div class="cert-texto">
+                    <div class="accent-line">Reconhecimento real</div>
+                    <h2 class="sobre-titulo">Seu esforço merece <span>reconhecimento</span></h2>
+                    <p class="sobre-texto">Ao concluir uma trilha, você recebe um <strong>certificado oficial</strong> com nome, trilha, carga horária e data de conclusão.</p>
+                    <ul class="cert-lista">
+                        <li>✅ Gerado automaticamente ao concluir</li>
+                        <li>✅ Download em PDF</li>
+                        <li>✅ Carga horária registrada</li>
+                        <li>✅ Data de conclusão e emissão</li>
+                        <li>✅ Verificado pela plataforma</li>
+                    </ul>
+                    <a href="html/cadastro.html" class="btn-primary" style="display:inline-block; margin-top: 32px;">Quero meu certificado</a>
+                </div>
+                <div class="cert-preview">
+                    <div class="cert-card">
+                        <div class="cert-header">
+                            <div class="cert-logo-circle">S</div>
+                            <span class="cert-brand">SPECTRUMTI</span>
+                        </div>
+                        <div class="cert-divider-gold"></div>
+                        <p class="cert-label">CERTIFICADO DE CONCLUSÃO</p>
+                        <h3 class="cert-nome">Seu Nome Aqui</h3>
+                        <p class="cert-trilha-label">concluiu com êxito a trilha</p>
+                        <p class="cert-trilha-nome">Programação Web</p>
+                        <div class="cert-divider-gold"></div>
+                        <div class="cert-dados">
+                            <div>
+                                <span class="cert-dado-label">CARGA HORÁRIA</span>
+                                <span class="cert-dado-val">4h 30m</span>
+                            </div>
+                            <div>
+                                <span class="cert-dado-label">CONCLUÍDO EM</span>
+                                <span class="cert-dado-val">2026</span>
+                            </div>
+                        </div>
+                        <div class="cert-blur-overlay">Complete uma trilha para desbloquear</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
 
-    </div>
 
-    <!-- SOBRE -->
+    <!-- ═══ SOBRE ═══ -->
     <section class="sobre-nos" id="sobre">
         <div class="sobre-container reveal">
-
             <div class="sobre-decoracao">
                 <div class="caixa-destaque">
                     <span class="ano-destaque">2026</span>
                     <p>Inclusão · TI</p>
                 </div>
             </div>
-
             <div class="sobre-content">
-                <div class="accent-line">O Projeto</div>
-                <h2 class="sobre-titulo">Sobre o Grupo <span>Spectrum</span></h2>
-
+                <div class="accent-line">O que é o Spectrum TI</div>
+                <h2 class="sobre-titulo">Uma plataforma feita para <span>simplificar</span></h2>
                 <div class="sobre-quote">
-                    <p>O <strong>Grupo Spectrum</strong> nasceu da convicção de que a tecnologia deve ser um campo inclusivo e acessível para todos.</p>
+                    <p>O <strong>Spectrum TI</strong> é uma plataforma de ensino desenvolvida para simplificar a jornada do aluno.</p>
                 </div>
-
-                <p class="sobre-texto">
-                    Nosso projeto é dedicado a <strong>pessoas neurodivergentes</strong> e estudantes com <strong>dificuldades de aprendizagem</strong> que desejam ingressar no mundo da tecnologia, mas que muitas vezes enfrentam barreiras no modelo de ensino tradicional.
-                </p>
-                <p class="sobre-texto">
-                    Acreditamos que a neurodivergência traz perspectivas únicas e valiosas para a resolução de problemas complexos na área de TI. Nosso sistema foi desenhado para respeitar diferentes ritmos e formas de processar informações.
-                </p>
-
+                <p class="sobre-texto">Nossa proposta foca na usabilidade, eliminando barreiras complexas e permitindo uma conexão mais direta entre o estudante e o conhecimento.</p>
+                <p class="sobre-texto">Aqui você aprende sem ruído, sem distração e sem complicação — do jeito que funciona para você.</p>
                 <div class="etec-info">
                     <p><strong>Desenvolvimento de Sistemas</strong> | 3º Módulo - 2026</p>
                     <p>ETEC Irmã Agostina</p>
                 </div>
             </div>
-
         </div>
     </section>
 
-    <!-- EQUIPE -->
+    <!-- ═══ EQUIPE ═══ -->
     <section class="equipe-section" id="equipe">
         <div class="container-equipe">
             <div class="accent-line center reveal">Desenvolvedores</div>
@@ -96,12 +279,9 @@
 
             <div class="swiper mySwiper reveal">
                 <div class="swiper-wrapper">
-
                     <div class="swiper-slide">
                         <article class="card-integrante">
-                            <div class="foto-container">
-                                <img src="./Imagens/fotogb.png" alt="Gabriel Felipe">
-                            </div>
+                            <div class="foto-container"><img src="./Imagens/fotogb.png" alt="Gabriel Felipe"></div>
                             <div class="info-integrante" id="desenvolvedor">
                                 <h3>Gabriel Felipe</h3>
                                 <span>Desenvolvedor Front-End</span>
@@ -112,12 +292,9 @@
                             </div>
                         </article>
                     </div>
-
                     <div class="swiper-slide">
                         <article class="card-integrante">
-                            <div class="foto-container">
-                                <img src="./Imagens/favicon.ico" alt="João Rafael">
-                            </div>
+                            <div class="foto-container"><img src="./Imagens/favicon.ico" alt="João Rafael"></div>
                             <div class="info-integrante" id="desenvolvedor">
                                 <h3>João Rafael</h3>
                                 <span>Desenvolvedor Front-End</span>
@@ -128,12 +305,9 @@
                             </div>
                         </article>
                     </div>
-
                     <div class="swiper-slide">
                         <article class="card-integrante">
-                            <div class="foto-container">
-                                <img src="./Imagens/favicon.ico" alt="Lucas Machado">
-                            </div>
+                            <div class="foto-container"><img src="./Imagens/favicon.ico" alt="Lucas Machado"></div>
                             <div class="info-integrante" id="desenvolvedor">
                                 <h3>Lucas Machado</h3>
                                 <span>Desenvolvedor Back-End</span>
@@ -144,12 +318,9 @@
                             </div>
                         </article>
                     </div>
-
                     <div class="swiper-slide">
                         <article class="card-integrante">
-                            <div class="foto-container">
-                                <img src="./Imagens/favicon.ico" alt="Kamilly Santos">
-                            </div>
+                            <div class="foto-container"><img src="./Imagens/favicon.ico" alt="Kamilly Santos"></div>
                             <div class="info-integrante" id="design1">
                                 <h3>Kamilly Santos</h3>
                                 <span>Designer & Documentação</span>
@@ -160,12 +331,9 @@
                             </div>
                         </article>
                     </div>
-
                     <div class="swiper-slide">
                         <article class="card-integrante">
-                            <div class="foto-container">
-                                <img src="./Imagens/favicon.ico" alt="Kaffer Dias">
-                            </div>
+                            <div class="foto-container"><img src="./Imagens/favicon.ico" alt="Kaffer Dias"></div>
                             <div class="info-integrante" id="design1">
                                 <h3>Kaffer Dias</h3>
                                 <span>Líder & Designer</span>
@@ -176,7 +344,6 @@
                             </div>
                         </article>
                     </div>
-
                 </div>
                 <div class="swiper-button-next"></div>
                 <div class="swiper-button-prev"></div>
@@ -185,13 +352,21 @@
         </div>
     </section>
 
-    <!-- CONTATO -->
+    <!-- ═══ CTA FINAL ═══ -->
+    <section class="cta-final">
+        <div class="section-inner reveal">
+            <h2>Pronto para começar?</h2>
+            <p>Crie sua conta grátis e comece a aprender do seu jeito hoje mesmo.</p>
+            <a href="html/cadastro.html" class="btn-primary btn-large">Criar conta grátis</a>
+        </div>
+    </section>
+
+    <!-- ═══ CONTATO ═══ -->
     <section class="contato-section" id="contato">
         <div class="contato-container reveal">
             <div class="accent-line center">Fale Conosco</div>
             <h2 class="contato-titulo">Entre em <span>Contato</span></h2>
             <p class="contato-subtitulo">Tem alguma dúvida ou sugestão? Fale com a equipe Spectrum TI.</p>
-
             <div class="contato-content">
                 <form class="contato-form" id="forms">
                     <input type="text" placeholder="Seu nome" aria-label="Seu nome" required>
@@ -199,7 +374,6 @@
                     <textarea placeholder="Sua mensagem" rows="5" aria-label="Sua mensagem" required></textarea>
                     <button type="submit">Enviar mensagem</button>
                 </form>
-
                 <div class="contato-info">
                     <h3>Informações</h3>
                     <p><span class="info-icon">✉</span> contato@spectrumti.com</p>
@@ -214,13 +388,12 @@
         </div>
     </section>
 
-    <!-- FOOTER -->
+    <!-- ═══ FOOTER ═══ -->
     <footer class="footer-spectrum">
         <div class="footer-container">
-
             <div class="footer-col">
                 <h2 class="footer-logo">SPECTRUM<span>TI</span></h2>
-                <p>Transformando ideias em soluções digitais.</p>
+                <p>Tecnologia inclusiva para diferentes formas de aprender.</p>
                 <div class="social-icons">
                     <a href="#">FB</a>
                     <a href="#">IG</a>
@@ -228,17 +401,15 @@
                     <a href="#">IN</a>
                 </div>
             </div>
-
             <div class="footer-col">
                 <h3>Navegação</h3>
                 <ul>
                     <li><a href="#">Home</a></li>
                     <li><a href="#sobre">Sobre Nós</a></li>
-                    <li><a href="#">Projeto TCC</a></li>
-                    <li><a href="#">Funcionalidades</a></li>
+                    <li><a href="#funcionalidades">Funcionalidades</a></li>
+                    <li><a href="#acessibilidade">Acessibilidade</a></li>
                 </ul>
             </div>
-
             <div class="footer-col">
                 <h3>Apoio</h3>
                 <ul>
@@ -247,7 +418,6 @@
                     <li><a href="#contato">Contato</a></li>
                 </ul>
             </div>
-
             <div class="footer-col">
                 <h3>Equipe</h3>
                 <ul>
@@ -256,7 +426,6 @@
                     <li><a href="https://github.com/Gabrielfllazaro/ProjetoTCC" target="_blank">Repositório</a></li>
                 </ul>
             </div>
-
         </div>
         <div class="footer-bottom">
             <p>&copy; 2026 Grupo Spectrum · Desenvolvimento de Sistemas ETEC · Todos os direitos reservados.</p>
@@ -277,6 +446,5 @@
         }, { threshold: 0.1 });
         reveals.forEach(el => io.observe(el));
     </script>
-
 </body>
 </html>
