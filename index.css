@@ -280,6 +280,52 @@ header {
     background: var(--border-hard);
 }
 
+/* ─── DIFERENCIAL 3 CLIQUES ─── */
+.diferencial-section {
+    padding: 60px 0;
+    background: var(--bg-soft);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+}
+
+.diferencial-inner {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    justify-content: center;
+    flex-wrap: wrap;
+    text-align: left;
+}
+
+.diferencial-numero {
+    font-size: 7rem;
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -6px;
+    color: transparent;
+    -webkit-text-stroke: 3px var(--accent);
+    flex-shrink: 0;
+}
+
+.diferencial-texto {
+    max-width: 480px;
+}
+
+.diferencial-texto h2 {
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    font-weight: 800;
+    letter-spacing: -1px;
+    line-height: 1.1;
+    margin-bottom: 12px;
+    color: var(--text);
+}
+
+.diferencial-texto p {
+    font-size: 1rem;
+    color: var(--text-soft);
+    line-height: 1.7;
+}
+
 /* ─── COMO FUNCIONA ─── */
 .como-funciona {
     padding: 110px 0;
